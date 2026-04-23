@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-server-framework",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "An experimental vanilla node framework for building APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist/main.js",
+    "dev:node": "tsx watch ./src/main.ts"
+  },
+  "keywords": [],
+  "author": "no1ne",
+  "license": "ISC",
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "@types/node": "^24.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@zxing/library": "^0.21.3",
+    "dotenv": "^17.2.3",
+    "tsx": "^4.21.0"
+  }
+}
