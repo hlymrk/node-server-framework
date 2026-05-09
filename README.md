@@ -13,16 +13,21 @@ An experimental vanilla Node.js framework for building HTTP/HTTPS APIs with Type
 
 ## Installation
 
-In your project's **package.json** file
+Install dependencies before running the project.
+
+```bash
+npm install
+# or, if you prefer pnpm:
+pnpm install
+```
+
+If you are using this repo as a dependency, add it to your `package.json` as:
 
 ```json
 {
-   ...
-
-    "dependencies": {
+  "dependencies": {
     "node-server-framework": "git+https://github.com/hlymrk/node-server-framework.git"
-    }
-    ...
+  }
 }
 ```
 
@@ -40,24 +45,28 @@ app.init();
 ### Development
 
 ```bash
+npm run dev:node
+# or with pnpm
 pnpm run dev:node
 ```
 
 This starts the server in watch mode on:
 
 - **HTTP**: `http://localhost:4000`
-- **HTTPS**: `https://localhost:4002`
+- **HTTPS**: `https://localhost:4001`
 
 ### Build
 
 ```bash
+npm run build
+# or with pnpm
 pnpm run build
 ```
 
 ### Production
 
 ```bash
-pnpm start
+npm start
 ```
 
 ## Project Structure
@@ -198,28 +207,35 @@ const age = validate(reqData.body.age, "number", 0, true, (a) => Math.floor(a));
 
 ## Environment Configuration
 
-Configure different environments in `src/config/env.ts`:
+The framework loads environment values from a `.env` file via `dotenv`.
 
-```typescript
-const Enviroments = {
-  staging: {
-    envName: "staging",
-    httpPort: 4000,
-    httpsPort: 4001,
-    httpOptions: getPem()!,
-  },
-  production: {
-    envName: "production",
-    httpPort: 8000,
-    httpsPort: 8001,
-    httpOptions: getPem()!,
-  },
-};
+Supported variables:
+
+- `NODE_ENV` — active environment, either `staging` or `production`
+- `ENV_NAME` — optional friendly environment label
+- `HTTP_PORT` — port for HTTP server
+- `HTTPS_PORT` — port for HTTPS server
+- `HTTPS_KEY_PATH` — path to the TLS private key file
+- `HTTPS_CERT_PATH` — path to the TLS certificate file
+
+Example `.env` file:
+
+```dotenv
+NODE_ENV=staging
+ENV_NAME=staging
+HTTP_PORT=4000
+HTTPS_PORT=4001
+HTTPS_KEY_PATH=./https/key.pem
+HTTPS_CERT_PATH=./https/cert.pem
 ```
 
-Set the environment with the `NODE_ENV` variable:
+The environment config in `src/config/env.ts` resolves these values and passes HTTPS options to `getPem()`.
+
+Run with a selected environment:
 
 ```bash
+NODE_ENV=production npm start
+# or with pnpm
 NODE_ENV=production pnpm start
 ```
 

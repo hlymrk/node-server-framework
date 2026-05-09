@@ -12,8 +12,8 @@ const Enviroments: Enviroments = {
   staging: {
     envName:
       process.env.ENV_NAME !== "staging" ? process.env.ENV_NAME : "staging",
-    httpPort: 4000,
-    httpsPort: 4001,
+    httpPort: process.env.HTTP_PORT || 4000,
+    httpsPort: process.env.HTTPS_PORT || 4001,
     httpOptions: getPem()!,
   },
   production: {
@@ -21,8 +21,8 @@ const Enviroments: Enviroments = {
       process.env.ENV_NAME !== "production"
         ? process.env.ENV_NAME
         : "production",
-    httpPort: 8000,
-    httpsPort: 8001,
+    httpPort: process.env.HTTP_PORT || 8000,
+    httpsPort: process.env.HTTPS_PORT || 8001,
     httpOptions: getPem()!,
   },
 };
