@@ -3,25 +3,56 @@
   "version": "1.0.0",
   "type": "module",
   "description": "An experimental vanilla node framework for building APIs",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "node ./dist/main.js",
-    "dev:node": "tsx watch ./src/main.ts"
+    "dev:node": "tsx watch ./src/main.ts",
+    "prepare": "npm run build"
   },
-  "keywords": [],
-  "author": "no1ne",
+  "keywords": [
+    "nodejs",
+    "framework",
+    "server",
+    "api",
+    "typescript",
+    "http",
+    "https"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "$crypt <hlymrk8@gmail.com> (https://github.com/hlymrk)",
   "license": "ISC",
   "packageManager": "pnpm@10.14.0",
   "devDependencies": {
     "@types/node": "^24.6.2",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@zxing/library": "^0.21.3",
     "dotenv": "^17.2.3",
-    "tsx": "^4.21.0"
-  }
+    "node-server-framework": "git+https://github.com/hlymrk/node-server-framework.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hlymrk/node-server-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hlymrk/node-server-framework/issues"
+  },
+  "homepage": "https://github.com/hlymrk/node-server-framework#readme"
 }

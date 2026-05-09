@@ -4,17 +4,35 @@ An experimental vanilla Node.js framework for building HTTP/HTTPS APIs with Type
 
 ## Features
 
-- 🚀 Minimal, lightweight HTTP/HTTPS server with native Node.js APIs
-- 🛣️ Custom routing system with middleware support
-- 📝 Full TypeScript support with type safety
-- 🔒 Dual HTTP/HTTPS server support
-- ✅ Built-in request validation utilities
-- 🌍 Environment-based configuration (staging/production)
+- Minimal, lightweight HTTP/HTTPS server with native Node.js APIs
+- Custom routing system with middleware support
+- Full TypeScript support with type safety
+- Dual HTTP/HTTPS server support
+- Built-in request validation utilities
+- Environment-based configuration (staging/production)
 
 ## Installation
 
-```bash
-pnpm install
+In your project's **package.json** file
+
+```json
+{
+   ...
+
+    "dependencies": {
+    "node-server-framework": "git+https://github.com/hlymrk/node-server-framework.git"
+    }
+    ...
+}
+```
+
+## Usage
+
+```ts
+import { Server } from "nodejs-server-framework";
+
+const app = new Server();
+app.init();
 ```
 
 ## Quick Start
@@ -46,28 +64,29 @@ pnpm start
 
 ```
 src/
-├── main.ts              # Application entry point
+├── main.ts                    # Application entry point
 ├── config/
-│   └── env.ts          # Environment configuration
+│   └── env.ts                 # Environment configuration
 ├── lib/
-│   ├── server.ts       # Core HTTP/HTTPS server
-│   ├── router.ts       # Routing engine
+│   ├── server.ts              # Core HTTP/HTTPS server
+│   ├── router.ts              # Routing engine
 │   └── utils/
-│       ├── validate.ts # Type validation utility
-│       ├── parseJson.ts # Safe JSON parser
-│       └── getPem.ts   # HTTPS certificate loader
-├── routes/             # Example API routes
-│   ├── accounts.ts     # Account management example
-│   └── tokens.ts       # Token handling example
+│       ├── validate.ts         # Type validation utility
+│       ├── parseJson.ts        # Safe JSON parser
+│       └── getPem.ts           # HTTPS certificate loader
+├── examples/
+|   |── routes/                 # Example API routes
+│   ├── accounts.ts             # Account management example
+│   └── tokens.ts               # Token handling example
 └── types/
-    └── index.d.ts      # TypeScript type definitions
+    └── index.d.ts              # TypeScript type definitions
 ```
 
 ## How to Use the Framework
 
 ### Creating a Route
 
-Routes are created using the Router class. Here's an example from `src/routes/accounts.ts`:
+Routes are created using the Router class. Here's an example from `src/example/routes/accounts.ts`:
 
 ```typescript
 import Router from "../lib/router.ts";
@@ -213,8 +232,6 @@ The framework includes an example `accounts` route demonstrating:
 - Account creation with validation
 - Email/password validation
 - Structured error responses
-
-**TODO**: Full implementation pending (login, account updates, deletion)
 
 ### Tokens Route (`/api/tokens`)
 

@@ -1,4 +1,3 @@
-declare module "qr-code-styling/lib/qr-code-styling.common.js";
 import type { IncomingHttpHeaders } from "node:http";
 import type { ServerOptions } from "node:https";
 import type { ParsedUrlQuery } from "node:querystring";
@@ -52,27 +51,4 @@ export interface Enviroment {
 export interface Enviroments {
   staging: Enviroment;
   production: Enviroment;
-}
-
-export interface AccountInfo {
-  email: string;
-  password: string;
-  options: {
-    data: {
-      plan: string;
-      name: string;
-      metadata: metadataValid;
-      qr_codes: any[];
-      barcodes: any[];
-      created_at: string;
-    };
-  };
-}
-
-export interface SignInInfo {
-  email: string;
-  password: string;
-  options?: {
-    [key: string]: string;
-  };
 }

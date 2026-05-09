@@ -6,11 +6,11 @@ import type { IncomingMessage, ServerResponse } from "http";
 import type { ServerOptions } from "https";
 import { StringDecoder } from "node:string_decoder";
 import { exit } from "node:process";
-import env from "../config/env.ts";
-import { validate } from "./utils/validate.ts";
-import Router from "./router.ts";
-import { parseJson } from "./utils/parseJson.ts";
-import { accounts } from "../routes/accounts.ts";
+import env from "../config/env.js";
+import { validate } from "./utils/validate.js";
+import Router from "./router.js";
+import { parseJson } from "./utils/parseJson.js";
+import { accounts } from "../examples/routes/accounts.js";
 
 /**
  * Server Library

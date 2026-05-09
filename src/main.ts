@@ -1,4 +1,4 @@
-import $$Server from "./lib/server.ts";
+import $$Server from "./lib/server.js";
 
 class App {
   constructor() {}
